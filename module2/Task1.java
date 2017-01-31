@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class Task1 {
     public static void main(String[] args) {
 
-        int[] intArray = {15, 2, 3, 4, 5, 6, -3, 8, 9, 10};
+        int[] intArray = {2,2,2,2,2,2,2,2,2};
         double[] doubleArray = {2.23, 3.643, 3, 5, 2.8, 96, 45.3, 1, 43, 2};
 
         System.out.println("**************FOR INT***************");
@@ -17,20 +17,20 @@ public class Task1 {
         System.out.println("The sum of massive is " + sum(intArray));
         System.out.println("The min of massive is " + min(intArray));
         System.out.println("The max of massive is " + max(intArray));
-        System.out.println("The max positive element of massive is " + maxpositive(intArray));
+        maxpositive(intArray);
         System.out.println("The multiplication of massive is " + multiplication(intArray));
         System.out.println("The modulus of first and last element of massive is " + modulus(intArray));
-        System.out.println("The second largest element of massive is " + secondLargest(intArray));
+        secondLargest(intArray);
         System.out.println("");
         System.out.println("**************FOR DOUBLE***************");
         System.out.println("");
         System.out.println("The sum of massive is " + sum(doubleArray));
         System.out.println("The min of massive is " + min(doubleArray));
         System.out.println("The max of massive is " + max(doubleArray));
-        System.out.println("The max positive element of massive is " + maxpositive(doubleArray));
+        maxpositive(doubleArray);
         System.out.println("The multiplication of massive is " + multiplication(doubleArray));
         System.out.println("The modulus of first and last element of massive is " + modulus(doubleArray));
-        System.out.println("The second largest element of massive is " + secondLargest(doubleArray));
+        secondLargest(doubleArray);
     }
     public static int sum(int array[]){
         int sum = 0;
@@ -57,7 +57,7 @@ public class Task1 {
         }
         return max;
     }
-    public static int maxpositive(int array[]){
+    public static void maxpositive(int array[]){
         int maxPositive = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] > maxPositive){ //Here we don't need "array[i]>0" course we initialize as 0.
@@ -65,10 +65,10 @@ public class Task1 {
             }
         }
         if (maxPositive == 0){
-            return Integer.parseInt(null);
+            System.out.println("There is no one positive number in massive");
         }
         else{
-            return maxPositive;
+            System.out.println("The max positive element of massive is " + maxPositive);
         }
 
     }
@@ -84,14 +84,28 @@ public class Task1 {
         int mod = array[0] % array[array.length-1];
         return mod;
     }
-    public static int secondLargest(int array[]){
+    public static void secondLargest(int array[]){
         Arrays.sort(array);
+        int count = 0; // Make inspection here.May be all elements in massive are the same.
+        for (int j = 0; j < array.length - 1; j++) {
+            if (array[j] == array[j+1]){
+                count += 1;}
+            else{
+                break;}
+        }
+        if (count == array.length - 1){
+            System.out.println("No second largest in this massive");
+            return;
+        }
+
         for (int i = array.length - 1; i > 0 ; i--) {
             if (array[i-1] < array[i]){
-                return array[i-1];
+                System.out.println("The second largest element of massive is " + array[i-1]);
+                break;
             }
         }
-        return Integer.parseInt(null);
+
+
     }
     public static double sum(double array[]){
         int sum = 0;
@@ -118,7 +132,7 @@ public class Task1 {
         }
         return max;
     }
-    public static double maxpositive(double array[]){
+    public static void maxpositive(double array[]){
         double maxPositive = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] > maxPositive){ //Here we don't need "array[i]>0" course we initialize as 0.
@@ -126,10 +140,10 @@ public class Task1 {
             }
         }
         if (maxPositive == 0){
-            return Integer.parseInt(null);
+            System.out.println("There is no one positive number in massive");
         }
         else{
-            return maxPositive;
+            System.out.println("The max positive element of massive is " + maxPositive);
         }
 
     }
@@ -145,13 +159,25 @@ public class Task1 {
         double mod = array[0] % array[array.length-1];
         return mod;
     }
-    public static double secondLargest(double array[]){
+    public static void secondLargest(double array[]){
         Arrays.sort(array);
+        int count = 0; // Make inspection here.May be all elements in massive are the same.
+        for (int j = 0; j < array.length - 1; j++) {
+            if (array[j] == array[j+1]){
+                count += 1;}
+            else{
+                break;}
+        }
+        if (count == array.length - 1) {
+            System.out.println("There is no second largest element in this massive.");
+            return;
+        }
         for (int i = array.length - 1; i > 0 ; i--) {
             if (array[i-1] < array[i]){
-                return array[i-1];
+                System.out.println("The second largest element of massive is " + array[i-1]);
+                break;
             }
         }
-        return Integer.parseInt(null);
+
     }
 }
