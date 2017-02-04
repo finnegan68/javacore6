@@ -22,7 +22,7 @@ public class GapInPrimes {
         //Catch all gaps
         long[] massOfGaps = new long[0];
         for (long i = m; i <= n; i++) {
-            if (isItGap(i)){
+            if (isItSimple(i)){
                 massOfGaps = Arrays.copyOf(massOfGaps, massOfGaps.length + 1);
                 massOfGaps[massOfGaps.length - 1] = i;
             }
@@ -36,8 +36,8 @@ public class GapInPrimes {
         return null;
     }
 
-    //Inspection: gap or not?
-    public static boolean isItGap(long x){
+    //Inspection: simple or not?
+    public static boolean isItSimple(long x){
         int count = 0;
         for (long i = 1; i <= x; i++) {
             if (x % i == 0){
