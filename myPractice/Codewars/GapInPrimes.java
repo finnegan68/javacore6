@@ -38,7 +38,6 @@ public class GapInPrimes {
 
     //Inspection: gap or not?
     public static boolean isItGap(long x){
-        long[] mass = new long[0];
         int count = 0;
         for (long i = 1; i <= x; i++) {
             if (x % i == 0){
