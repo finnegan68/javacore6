@@ -13,7 +13,7 @@ import java.util.Arrays;
 public class GapInPrimes {
 
     public static void main(String[] args) {
-        for(long element : gap(2,3,50)){
+        for(long element : gap(4,100,110)){
             System.out.print(element + " ");
         }
     }
@@ -28,7 +28,7 @@ public class GapInPrimes {
             }
         }
         for (int i = 0; i < massOfGaps.length - 1; i++) {
-            if (massOfGaps[i + 1] - massOfGaps[i] == 2){
+            if (massOfGaps[i + 1] - massOfGaps[i] == g){
                 long[] answer = {massOfGaps[i], massOfGaps[i + 1]};
                 return answer;
             }
