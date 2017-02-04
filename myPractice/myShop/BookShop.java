@@ -9,7 +9,7 @@ public class BookShop {
     public BookShop(int numOfItems){
         items = new Item[numOfItems];
     }
-    public void getAllNames(){
+    public void printAllNames(){
         for (int i = 0; i < items.length; i++) {
             System.out.println((i+1) + "." + items[i].getName());
         }

@@ -8,10 +8,10 @@ public class Item {
     private double cost;
     private String description;
 
-    public Item(String n, double c, String d){
-        name = n;
-        cost = c;
-        description = d;
+    public Item(String name, double cost, String description){
+        this.name = name;
+        this.cost = cost;
+        this.description = description;
     }
     public String getName(){
         return name;

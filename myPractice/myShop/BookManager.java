@@ -10,13 +10,13 @@ public class BookManager {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         // Create our shop
-        System.out.println("Enter the number of items in your shop");
+        System.out.println("Enter the number of items in your shop: ");
         int num = input.nextInt();
         input.nextLine();
         BookShop firstShop = new BookShop(num);
         // Add items to shop
         for (int i = 0; i < firstShop.getShopSize(); i++) {
-            System.out.println("Enter the name");
+            System.out.println("Enter the name: ");
             String name = input.nextLine();
             System.out.println("Name: " + name);
             System.out.println("Enter the price");
@@ -30,7 +30,7 @@ public class BookManager {
         }
         //Work with client.Here we show our catalog
         System.out.println("Here you can see our catalog");
-        firstShop.getAllNames();
+        firstShop.printAllNames();
         firstShop.getAllDescriptions();
         System.out.println("If you like something press YES.If not - press NO.");
         String answ1 = input.nextLine();
