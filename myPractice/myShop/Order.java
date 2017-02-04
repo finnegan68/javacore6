@@ -8,7 +8,7 @@ public class Order {
     private Item[] myOrder;
     private int tmp = 0;
     public Order(int numOfItems){
-        Item[] myOrder = new Item[numOfItems];
+        myOrder = new Item[numOfItems];
         sum = 0;
     }
     public void setSum(double price){
