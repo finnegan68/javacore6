@@ -31,6 +31,9 @@ public class GapInPrimes {
                 tmp = i;
                 count++;
             }
+            else if(isItPrime(i) && count > 0 &&(i - tmp != g)){
+                tmp = i;
+            }
         }
         return null;
     }
