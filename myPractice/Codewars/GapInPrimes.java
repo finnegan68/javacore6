@@ -13,45 +13,35 @@ import java.util.Arrays;
 public class GapInPrimes {
 
     public static void main(String[] args) {
-        for(long element : gap(4,100,110)){
+        for(long element : gap(10,300,400)){
             System.out.print(element + " ");
         }
     }
 
     public static long[] gap(int g, long m, long n) {
         //Catch all gaps
-        long[] massOfGaps = new long[0];
+        long tmp = 0;
+        int count = 0;
         for (long i = m; i <= n; i++) {
-            if (isItSimple(i)){
-                massOfGaps = Arrays.copyOf(massOfGaps, massOfGaps.length + 1);
-                massOfGaps[massOfGaps.length - 1] = i;
-            }
-        }
-        for (int i = 0; i < massOfGaps.length - 1; i++) {
-            if (massOfGaps[i + 1] - massOfGaps[i] == g){
-                long[] answer = {massOfGaps[i], massOfGaps[i + 1]};
+            if(isItPrime(i) && count > 0 &&(i - tmp == g)){
+                long[] answer = {tmp, i};
                 return answer;
+            }
+            else if (isItPrime(i) && count == 0){
+                tmp = i;
+                count++;
             }
         }
         return null;
     }
 
     //Inspection: simple or not?
-    public static boolean isItSimple(long x){
-        int count = 0;
-        for (long i = 1; i <= x; i++) {
-            if (x % i == 0){
-                count++;
+    public static boolean isItPrime(long x){
+        for (long i = 2; i < Math.sqrt(x); i++) {
+            if((x % i) == 0){
+                return false;
             }
-            else if(count > 2){
-                break;
-            }
-        }
-        if (count == 2){
-            return true;
-        }else {
-            return false;
-        }
+        }return true;
     }
 }
 
