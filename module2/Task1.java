@@ -3,9 +3,7 @@ package module2;
 import java.util.Arrays;
 
 
-/**
- * Created by Илья on 30.01.2017.
- */
+
 public class Task1 {
     public static void main(String[] args) {
 

@@ -1,8 +1,6 @@
 package module2;
 
-/**
- * Created by Илья on 31.01.2017.
- */
+
 public class Task3 {
     public static void main(String[] args) {
 

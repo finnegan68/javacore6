@@ -13,7 +13,7 @@ import java.util.Arrays;
 public class GapInPrimes {
 
     public static void main(String[] args) {
-        for(long element : gap(10,300,400)){
+        for(long element : gap(4,130,200)){
             System.out.print(element + " ");
         }
     }
