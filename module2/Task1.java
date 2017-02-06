@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class Task1 {
     public static void main(String[] args) {
 
-        int[] intArray = {2,2,2,2,2,2,2,2,2};
+        int[] intArray = {2,2,2,2,2,2,2,2,0};
         double[] doubleArray = {2.23, 3.643, 3, 5, 2.8, 96, 45.3, 1, 43, 2};
 
         System.out.println("**************FOR INT***************");
@@ -17,7 +17,7 @@ public class Task1 {
         System.out.println("The max of massive is " + max(intArray));
         maxpositive(intArray);
         System.out.println("The multiplication of massive is " + multiplication(intArray));
-        System.out.println("The modulus of first and last element of massive is " + modulus(intArray));
+        modulus(intArray);
         secondLargest(intArray);
         System.out.println("");
         System.out.println("**************FOR DOUBLE***************");
@@ -27,7 +27,7 @@ public class Task1 {
         System.out.println("The max of massive is " + max(doubleArray));
         maxpositive(doubleArray);
         System.out.println("The multiplication of massive is " + multiplication(doubleArray));
-        System.out.println("The modulus of first and last element of massive is " + modulus(doubleArray));
+        modulus(doubleArray);
         secondLargest(doubleArray);
     }
     public static int sum(int array[]){
@@ -78,9 +78,13 @@ public class Task1 {
         }
         return mult;
     }
-    public static int modulus(int array[]){
-        int mod = array[0] % array[array.length-1];
-        return mod;
+    public static void modulus(int array[]){
+        try{
+            int mod = array[0] % array[array.length-1];
+            System.out.println("The modulus is " + mod);
+        }catch (ArithmeticException e){
+            System.out.println("Error! Division by zero.");
+        }
     }
     public static void secondLargest(int array[]){
         Arrays.sort(array);
@@ -153,9 +157,13 @@ public class Task1 {
         }
         return mult;
     }
-    public static double modulus(double array[]){
-        double mod = array[0] % array[array.length-1];
-        return mod;
+    public static void modulus(double array[]){
+        try{
+            double mod = array[0] % array[array.length-1];
+            System.out.println("The modulus is " + mod);
+        }catch (ArithmeticException e){
+            System.out.println("Error! Division by zero.");
+        }
     }
     public static void secondLargest(double array[]){
         Arrays.sort(array);
