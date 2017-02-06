@@ -71,12 +71,16 @@ public class Task1 {
 
     }
     public static int multiplication(int array[]){
-        int mult = array[0];
-        //Here we start from second element of massive.Course first is "mult".
-        for (int i = 1; i < array.length; i++) {
-            mult *= array[i];
+        if (array == null){
+            System.out.println("Error. The massive is null!");
+            return 0;
+        }else{
+            int multiplication = 1;
+            for (int i = 0; i < array.length; i++) {
+                multiplication = multiplication * array[i];
+            }
+            return multiplication;
         }
-        return mult;
     }
     public static void modulus(int array[]){
         try{
@@ -150,12 +154,16 @@ public class Task1 {
 
     }
     public static double multiplication(double array[]){
-        double mult = array[0];
-        //Here we start from second element of massive.Course first is "mult".
-        for (int i = 1; i < array.length; i++) {
-            mult *= array[i];
+        if (array == null){
+            System.out.println("Error. The massive is null!");
+            return 0;
+        }else{
+            double multiplication = 1;
+            for (int i = 0; i < array.length; i++) {
+                multiplication = multiplication * array[i];
+            }
+            return multiplication;
         }
-        return mult;
     }
     public static void modulus(double array[]){
         try{
