@@ -1,6 +1,5 @@
 package myPractice.TaskFromJulia1;
 
-import myPractice.myShop.Item;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
