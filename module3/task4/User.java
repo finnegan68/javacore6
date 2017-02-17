@@ -3,13 +3,13 @@ package module3.task4;
 
 public class User {
     private String name;
-    private int balance;
+    private double balance;
     private int monthsOfEmployment;
     private String companyName;
     private int salary;
     private String currency;
 
-    public User(String name, int balance, int monthsOfEmployment, String companyName, int salary, String currency) {
+    public User(String name, double balance, int monthsOfEmployment, String companyName, int salary, String currency) {
         this.name = name;
         this.balance = balance;
         this.monthsOfEmployment = monthsOfEmployment;
@@ -22,7 +22,7 @@ public class User {
         return name;
     }
 
-    public int getBalance() {
+    public double getBalance() {
         return balance;
     }
 
@@ -46,7 +46,7 @@ public class User {
         this.name = name;
     }
 
-    public void setBalance(int balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
@@ -64,21 +64,5 @@ public class User {
 
     public void setCurrency(String currency) {
         this.currency = currency;
-    }
-    public void paySalary(){
-        balance += salary;
-    }
-    public void withdraw(int summ){
-        if (summ < 1000){
-            balance -= summ * 1.05;
-        }else {
-            balance -= summ * 1.1;
-        }
-    }
-    public int companyNameLenght(){
-        return companyName.length();
-    }
-    public void  monthIncreaser(int addMonth){
-        monthsOfEmployment += addMonth;
     }
 }
