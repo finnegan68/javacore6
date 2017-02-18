@@ -100,38 +100,99 @@ public class Container implements List<Item> {
         return true;
     }
 
-    /**
-     * Removes the first occurrence of the specified element from this list,
-     * if it is present (optional operation).  If this list does not contain
-     * the element, it is unchanged.  More formally, removes the element with
-     * the lowest index <tt>i</tt> such that
-     * <tt>(o==null&nbsp;?&nbsp;get(i)==null&nbsp;:&nbsp;o.equals(get(i)))</tt>
-     * (if such an element exists).  Returns <tt>true</tt> if this list
-     * contained the specified element (or equivalently, if this list changed
-     * as a result of the call).
-     *
-     * @param o element to be removed from this list, if present
-     * @return <tt>true</tt> if this list contained the specified element
-     * @throws ClassCastException            if the type of the specified element
-     *                                       is incompatible with this list
-     *                                       (<a href="Collection.html#optional-restrictions">optional</a>)
-     * @throws NullPointerException          if the specified element is null and this
-     *                                       list does not permit null elements
-     *                                       (<a href="Collection.html#optional-restrictions">optional</a>)
-     * @throws UnsupportedOperationException if the <tt>remove</tt> operation
-     *                                       is not supported by this list
-     */
     @Override
     public boolean remove(Object o) {
-        for(Item item : this.elements){
-            if(item.equals(o)){
-
+        for (int i = 0; i < elements.length; i++) {
+            if(o.equals(elements[i])){
+                int numMoved = elements.length - i - 1;
+                if (numMoved > 0){
+                    System.arraycopy(elements, i + 1, elements, i, numMoved);
+                }
+                elements[elements.length - 1] = null;
                 return true;
             }
-        }return false;
+        }
+        return false;
     }
 
+    @Override
+    public void clear() {
+        for(Object element : elements){
+            element = null;
+        }
+    }
+
+    @Override
+    public Item get(int index) {
+        return elements[index];
+    }
+
+    @Override
+    public void add(int index, Item element) {
+        if (index > elements.length || index < 0){
+            return;
+        }
+        elements[index] = element;
+    }
+
+    @Override
+    public Item set(int index,Item element) {
+        if (index > elements.length || index < 0){
+            throw new IndexOutOfBoundsException("index is out");
+        }
+        Item tmp =elements[index];
+        elements[index] = element;
+        return tmp;
+    }
+
+    @Override
+    public Item remove(int index) {
+        if (index > elements.length || index < 0){
+            throw new IndexOutOfBoundsException("index is out");
+        }
+        Item tmp = elements[index];
+        this.remove(elements[index]);
+        return tmp;
+    }
+
+
+    @Override
+    public int indexOf(Object o) {
+        if(o == null){
+            throw new NullPointerException("it's null");
+        }
+        for (int i = 0; i < elements.length; i++) {
+            if(elements[i].equals(o)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    @Override
+    public int lastIndexOf(Object o) {
+        if(o == null){
+            throw new NullPointerException("it's null");
+        }
+        for (int i = elements.length - 1; i > -1 ; i--) {
+            if(elements[i].equals(o)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
     /**
+     *  I don't know how to work with collections yet. So now i'm not override all net methods.
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
      * Returns <tt>true</tt> if this list contains all of the elements of the
      * specified collection.
      *
@@ -261,30 +322,8 @@ public class Container implements List<Item> {
         return false;
     }
 
-    /**
-     * Removes all of the elements from this list (optional operation).
-     * The list will be empty after this call returns.
-     *
-     * @throws UnsupportedOperationException if the <tt>clear</tt> operation
-     *                                       is not supported by this list
-     */
-    @Override
-    public void clear() {
 
-    }
 
-    /**
-     * Returns the element at the specified position in this list.
-     *
-     * @param index index of the element to return
-     * @return the element at the specified position in this list
-     * @throws IndexOutOfBoundsException if the index is out of range
-     *                                   (<tt>index &lt; 0 || index &gt;= size()</tt>)
-     */
-    @Override
-    public Item get(int index) {
-        return null;
-    }
 
 
 
@@ -307,95 +346,7 @@ public class Container implements List<Item> {
      * @throws IndexOutOfBoundsException     if the index is out of range
      *                                       (<tt>index &lt; 0 || index &gt; size()</tt>)
      */
-    @Override
-    public void add(int index, Item element) {
 
-    }
-
-    /**
-     * Replaces the element at the specified position in this list with the
-     * specified element (optional operation).
-     *
-     * @param index   index of the element to replace
-     * @param element element to be stored at the specified position
-     * @return the element previously at the specified position
-     * @throws UnsupportedOperationException if the <tt>set</tt> operation
-     *                                       is not supported by this list
-     * @throws ClassCastException            if the class of the specified element
-     *                                       prevents it from being added to this list
-     * @throws NullPointerException          if the specified element is null and
-     *                                       this list does not permit null elements
-     * @throws IllegalArgumentException      if some property of the specified
-     *                                       element prevents it from being added to this list
-     * @throws IndexOutOfBoundsException     if the index is out of range
-     *                                       (<tt>index &lt; 0 || index &gt;= size()</tt>)
-     */
-    @Override
-    public Item set(int index,Item element) {
-        return null;
-    }
-
-    /**
-     * Removes the element at the specified position in this list (optional
-     * operation).  Shifts any subsequent elements to the left (subtracts one
-     * from their indices).  Returns the element that was removed from the
-     * list.
-     *
-     * @param index the index of the element to be removed
-     * @return the element previously at the specified position
-     * @throws UnsupportedOperationException if the <tt>remove</tt> operation
-     *                                       is not supported by this list
-     * @throws IndexOutOfBoundsException     if the index is out of range
-     *                                       (<tt>index &lt; 0 || index &gt;= size()</tt>)
-     */
-    @Override
-    public Item remove(int index) {
-        return null;
-    }
-
-    /**
-     * Returns the index of the first occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the lowest index <tt>i</tt> such that
-     * <tt>(o==null&nbsp;?&nbsp;get(i)==null&nbsp;:&nbsp;o.equals(get(i)))</tt>,
-     * or -1 if there is no such index.
-     *
-     * @param o element to search for
-     * @return the index of the first occurrence of the specified element in
-     * this list, or -1 if this list does not contain the element
-     * @throws ClassCastException   if the type of the specified element
-     *                              is incompatible with this list
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
-     * @throws NullPointerException if the specified element is null and this
-     *                              list does not permit null elements
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
-     */
-    @Override
-    public int indexOf(Object o) {
-        return 0;
-    }
-
-    /**
-     * Returns the index of the last occurrence of the specified element
-     * in this list, or -1 if this list does not contain the element.
-     * More formally, returns the highest index <tt>i</tt> such that
-     * <tt>(o==null&nbsp;?&nbsp;get(i)==null&nbsp;:&nbsp;o.equals(get(i)))</tt>,
-     * or -1 if there is no such index.
-     *
-     * @param o element to search for
-     * @return the index of the last occurrence of the specified element in
-     * this list, or -1 if this list does not contain the element
-     * @throws ClassCastException   if the type of the specified element
-     *                              is incompatible with this list
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
-     * @throws NullPointerException if the specified element is null and this
-     *                              list does not permit null elements
-     *                              (<a href="Collection.html#optional-restrictions">optional</a>)
-     */
-    @Override
-    public int lastIndexOf(Object o) {
-        return 0;
-    }
 
     /**
      * Next 3 methods we can not overload (Julia said so :D )
