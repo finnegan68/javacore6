@@ -1,20 +1,20 @@
 package PetProject;
 
 
-import java.util.LinkedHashMap;
+import java.util.Hashtable;
 
 public class Basket {
     /**
-     * Key of hashtable is id of product.
+     * Key of hashtable is part number of product.
      * Value is number of this products.
      */
-    private LinkedHashMap<Long, Integer> myBasket;
+    private Hashtable<Long, Integer> myBasket = new Hashtable<>(0);
 
-    public Basket(LinkedHashMap myBasket) {
+    public Basket(Hashtable<Long, Integer> myBasket) {
         this.myBasket = myBasket;
     }
 
-    public LinkedHashMap<Long, Integer> getMyBasket() {
+    public Hashtable<Long, Integer> getMyBasket() {
         return myBasket;
     }
 }

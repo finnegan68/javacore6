@@ -2,6 +2,7 @@ package PetProject;
 
 
 import java.util.ArrayList;
+import java.util.Enumeration;
 
 public class ConsoleShopInterfase {
 
@@ -13,11 +14,15 @@ public class ConsoleShopInterfase {
     }
 
     public void addProductToBasket(Product product, Basket basket, int howMuch) {
-        basket.getMyBasket().put(product.getId(), howMuch);
+        basket.getMyBasket().put(product.getPartNumber(), howMuch);
     }
 
     public void showProductsInBasket(Basket basket) {
-
+        Enumeration<Long> element = basket.getMyBasket().keys();
+        while( element.hasMoreElements()){
+            Long myElement = element.nextElement();
+            System.out.println("Product id is " + myElement + " in mumber of  " + basket.getMyBasket().get(myElement));
+        }
     }
 
 
@@ -33,10 +38,10 @@ public class ConsoleShopInterfase {
         if(basket.getMyBasket().containsValue(product.getDescription())){
             int tmp = basket.getMyBasket().get(product.getDescription());
             basket.getMyBasket().remove(product.getDescription());
-            basket.getMyBasket().put(product.getId(),howMany + tmp);
+            basket.getMyBasket().put(product.getPartNumber(),howMany + tmp);
             return;
         }
-        basket.getMyBasket().put(product.getId(), howMany);
+        basket.getMyBasket().put(product.getPartNumber(), howMany);
     }
 
 

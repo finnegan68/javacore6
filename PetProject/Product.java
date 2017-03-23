@@ -2,20 +2,20 @@ package PetProject;
 
 
 public class Product {
-    private long id;
+    private long partNumber;
     private String name;
     private double price;
     private String description;
 
     public Product(long id, String name, double price, String description) {
-        this.id = id;
+        this.partNumber = partNumber;
         this.name = name;
         this.price = price;
         this.description = description;
     }
 
-    public long getId() {
-        return id;
+    public long getPartNumber() {
+        return partNumber;
     }
 
     public String getName() {
@@ -41,7 +41,7 @@ public class Product {
 
         Product product = (Product) o;
 
-        if (id != product.id) return false;
+        if (partNumber != product.partNumber) return false;
         if (Double.compare(product.price, price) != 0) return false;
         if (name != null ? !name.equals(product.name) : product.name != null) return false;
         return description != null ? description.equals(product.description) : product.description == null;
@@ -51,7 +51,7 @@ public class Product {
     public int hashCode() {
         int result;
         long temp;
-        result = (int) (id ^ (id >>> 32));
+        result = (int) (partNumber ^ (partNumber >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
         temp = Double.doubleToLongBits(price);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
