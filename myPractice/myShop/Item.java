@@ -23,5 +23,27 @@ public class Item {
         return description;
     }
 
- }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Item item = (Item) o;
+
+        if (Double.compare(item.cost, cost) != 0) return false;
+        if (!name.equals(item.name)) return false;
+        return description.equals(item.description);
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = name.hashCode();
+        temp = Double.doubleToLongBits(cost);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + description.hashCode();
+        return result;
+    }
+}
 
