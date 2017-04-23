@@ -44,6 +44,7 @@ public class Main2 {
         }
         System.out.print("Is orders empty? ");
         System.out.print(orders.isEmpty());
+
     }
 
     public static boolean containUser(String user, TreeSet<Order> orders){
