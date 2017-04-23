@@ -3,7 +3,7 @@ package module7;
 import module4.Currency;
 
 
-public class Order {
+public class Order implements Comparable<Order>{
     long id;
     int price;
     Currency currency;
@@ -66,5 +66,10 @@ public class Order {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public int compareTo(Order o) {
+        return Long.compare(this.getPrice(), o.getPrice());
     }
 }
