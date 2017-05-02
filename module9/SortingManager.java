@@ -1,8 +1,10 @@
 package module9;
 
+import module4.Currency;
 import module7.Order;
-import java.util.Collections;
-import java.util.List;
+
+import java.util.*;
+import java.util.function.Predicate;
 
 public class SortingManager {
 
@@ -26,5 +28,55 @@ public class SortingManager {
             return answ3;
         });
     }
-
+    public List<Order> filterOrders(List<Order> myOrders, Predicate<Order> myPredicate){
+        List<Order> answer = new ArrayList<>();
+        for(Order order : myOrders){
+            if(myPredicate.test(order)){
+                answer.add(order);
+            }
+        }
+        return answer;
+    }
+    public List<Order> getOrdersWherePriceLessThen(List<Order> orders, int price){
+        return filterOrders(orders, x -> x.getPrice() < price);
+    }
+    public List<List<Order>> divedeByCurrency(List<Order> orders){
+        List<Order> dollars = filterOrders(orders, x -> x.getCurrency() == Currency.USD);
+        List<Order> euro = filterOrders(orders, x -> x.getCurrency() == Currency.EUR);
+        List<List<Order>> answer = new ArrayList<>();
+        answer.add(dollars);
+        answer.add(euro);
+        return answer;
+    }
+    public LinkedHashSet<Order> getUniqueOrders(List<Order> orders){
+        return new LinkedHashSet<Order>(orders);
+    }
+    public boolean isThereThisMan(List<Order> orders, String name){
+        List<Order> answer = filterOrders(orders, x -> x.getUser().getLastName() == name);
+        if(answer.size() > 0){
+            return true;
+        }
+        return false;
+    }
+    public void delDollars(List<Order> orders){
+        orders = filterOrders(orders, x -> x.getCurrency() != Currency.USD);
+    }
+    public List<List<Order>> divideByCity(List<Order> orders){
+        List<List<Order>> answer = new ArrayList<>();
+        List<String> cities = new ArrayList<>();
+        for(Order order : orders){
+            cities.add(order.getUser().getCity());
+        }
+        Set<String> uniqueCities = new LinkedHashSet<>(cities);
+        for(String city : uniqueCities){
+            List<Order> newList = new ArrayList<>();
+            for(Order order : orders){
+                if(order.getUser().getCity() == city){
+                    newList.add(order);
+                }
+            }
+            answer.add(newList);
+        }
+        return answer;
+    }
 }
