@@ -9,9 +9,9 @@ public class USBank extends Bank{
 
     @Override
     int getLimitOfWithdrawal() {
-        if(currency.equals(Currency.USD)){
+        if(currency == Currency.USD){
             return 1000;
-        }else if(currency.equals(Currency.EUR)){
+        }else if(currency == Currency.EUR){
             return 1200;
         }else {
             return 0;
@@ -20,7 +20,7 @@ public class USBank extends Bank{
 
     @Override
     int getLimitOfFunding() {
-        if(currency.equals(Currency.EUR)){
+        if(currency == Currency.EUR){
             return 10000;
         }else {
             return 0;
@@ -29,9 +29,9 @@ public class USBank extends Bank{
 
     @Override
     double getMonthlyRate() {
-        if(currency.equals(Currency.USD)){
+        if(currency == Currency.USD){
             return 0.01;
-        }else if(currency.equals(Currency.EUR)){
+        }else if(currency == Currency.EUR){
             return 0.02;
         }else {
             return 0;
@@ -40,16 +40,16 @@ public class USBank extends Bank{
 
     @Override
     double getCommission(int summ) {
-        if(this.currency.equals(Currency.USD) && summ < 1000){
+        if(this.currency == Currency.USD && summ < 1000){
             return 0.05;
         }
-        else if(this.currency.equals(Currency.USD) && summ > 1000){
+        else if(this.currency == Currency.USD && summ > 1000){
             return 0.07;
         }
-        else if(this.currency.equals(Currency.EUR) && summ < 1000){
+        else if(this.currency == Currency.EUR && summ < 1000){
             return 0.06;
         }
-        else if(this.currency.equals(Currency.EUR) && summ > 1000){
+        else if(this.currency == Currency.EUR && summ > 1000){
             return 0.08;
         }
         return 0;
