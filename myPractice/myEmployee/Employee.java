@@ -1,9 +1,7 @@
 package myPractice.myEmployee;
 
-/**
- * Created by Илья on 06.02.2017.
- */
-public abstract class Employee {
+
+public abstract class Employee implements Comparable<Employee>{
 
     private static int nextId = 1;
 
@@ -36,5 +34,12 @@ public abstract class Employee {
     }
     public String getDescription(){
         return "Id of employee : " + getId() + ". Name : " + getName() + ". Salary : " + getSalary();
+    }
+    public int compareTo(Employee someEmployee) {
+        int result = Double.compare(getSalary(),someEmployee.getSalary());
+        if (result == 0){
+            return name.compareTo(someEmployee.getName());
+    }
+        return result;
     }
 }
